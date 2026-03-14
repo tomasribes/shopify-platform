@@ -1,0 +1,5 @@
+.env
+app/node_modules
+app/.shopify
+app/build
+app/.cache

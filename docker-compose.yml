@@ -1,0 +1,19 @@
+services:
+  shopify:
+    build: .
+    stdin_open: true
+    tty: true
+    ports:
+      - "3000:3000"
+    volumes:
+      # App source code — persisted on host
+      - ./app:/workspace/app
+      # Shopify CLI auth credentials — persisted between restarts
+      # Mount the full .config dir to cover all subdirs the CLI creates
+      - shopify-config:/home/node/.config
+    env_file:
+      - .env
+    command: dev
+
+volumes:
+  shopify-config:
